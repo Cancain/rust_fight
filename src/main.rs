@@ -16,6 +16,8 @@ fn game() {
 
         if character.trim() == "" {
             println!("You have no character, [c]reate to create a character");
+        } else {
+            println!("[f]ight to fight!");
         }
 
         io::stdin().read_line(&mut command)
@@ -27,6 +29,8 @@ fn game() {
             game_on = false;
         } else if command.trim() == "c" || command.trim() == "create" {
             character = create_character();
+        } else if command.trim() == "f" || command.trim() == "fight" {
+            fight();
         }
     }
 }
@@ -39,4 +43,8 @@ fn create_character() -> String {
         .expect("Something went wrong");
 
     name
+}
+
+fn fight() {
+
 }
