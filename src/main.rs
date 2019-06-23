@@ -30,7 +30,7 @@ fn game() {
         } else if command.trim() == "c" || command.trim() == "create" {
             character = create_character();
         } else if command.trim() == "f" || command.trim() == "fight" {
-            fight();
+            fight(&character);
         }
     }
 }
@@ -45,6 +45,11 @@ fn create_character() -> String {
     name
 }
 
-fn fight() {
+fn fight(player: &String) {
+    let mut fight_on = true;
 
+    println!("Welcome to the areana {}!", player);
+
+    while fight_on {
+    }
 }
