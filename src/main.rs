@@ -1,5 +1,7 @@
+use rand::Rng;
 use std::io;
 
+#[derive(Debug)]
 struct Character {
     name: String,
     health: i32,
@@ -66,10 +68,33 @@ fn create_character(characters_created: &mut i32) -> Character {
     character
 }
 
+fn create_enemy_npc() -> Character {
+    let npc = Character {
+        name: String::from("Enemy"),
+        health: 100,
+        alive: true,
+    };
+
+    npc
+}
+
+fn roll_initiative() -> i32 {
+    let roll = rand::thread_rng().gen_range(1, 100);
+    roll
+}
+
 fn fight(player: &Character) {
     let mut fight_on = true;
-
+    let enemy = &create_enemy_npc();
+    let mut starting_character: &Character;
     println!("Welcome to the areana {}!", player.name);
-
-    while fight_on {}
+    println!("You are up against {:#?}", enemy);
+    while fight_on {
+        if roll_initiative() < 50{
+            starting_character = player
+        } else {
+            starting_character = enemy
+        }
+        println!("{} Goes first", starting_character.name);
+    }
 }
